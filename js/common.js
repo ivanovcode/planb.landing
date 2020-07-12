@@ -1,6 +1,9 @@
 $( document ).ready(function() {
     var end = new Date('07/12/2020 23:50');
 
+    monthA = 'января,февраля,марта,апреля,мая,июня,июля,августа,сентября,октября,ноября,декабря'.split(',');
+    document.getElementById('date').innerHTML = end.getDate() + ' ' + monthA[end.getMonth()];
+
     var _second = 1000;
     var _minute = _second * 60;
     var _hour = _minute * 60;
@@ -13,8 +16,8 @@ $( document ).ready(function() {
         if (distance < 0) {
 
             clearInterval(timer);
-            document.getElementById('countdown').innerHTML = 'EXPIRED!';
-
+            document.getElementById('countdown').innerHTML = 'Прием заявок завершен!';
+            $('.btn-send-order').addClass('disabled');
             return;
         }
         var days = Math.floor(distance / _day);
