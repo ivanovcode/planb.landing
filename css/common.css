@@ -16,10 +16,13 @@ body.debug > div {
 
 
 .promo-container {
-    height: 613px;
+    min-height: 613px;
 }
 
 body {
+    font-family: 'Formular';
+    font-weight: normal;
+    font-style: normal;
     background-color: #fff;
     background-image: url('../img/bg.png');
     background-position: center top;
@@ -28,6 +31,11 @@ body {
 
 header {
     background-color: #000;
+    color: #fff;
+}
+
+main {
+    color: #fff;
 }
 
 .promo-container {
@@ -50,6 +58,102 @@ header {
     background-position: top center;
 }
 
+.promo-label {
+    max-width: 700px;
+    margin: 0 auto;
+    padding-top: 67px;
+    padding-left: 50px;
+}
+
+.promo-thumbs {
+    max-width: 906px;
+    float: right;
+    padding-top: 20px;
+    padding-left: 50px;
+}
+
+.promo-thumbs .thumb {
+    display: table;
+    padding: 10px 5px;
+}
+
+.promo-thumbs .icon {
+    display: table-cell;
+    width: 25px;
+    height: 25px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center center;
+}
+
+.promo-thumbs .icon.icon-1 {
+    background-image: url(../img/5.png);
+}
+
+.promo-thumbs .icon.icon-2 {
+    background-image: url(../img/6.png);
+}
+
+.promo-thumbs .icon.icon-3 {
+    background-image: url(../img/7.png);
+}
+
+.promo-thumbs .icon.icon-4 {
+    background-image: url(../img/8.png);
+}
+
+.promo-thumbs .icon.icon-5 {
+    background-image: url(../img/9.png);
+}
+
+.promo-thumbs .icon.icon-6 {
+    background-image: url(../img/10.png);
+}
+
+.promo-thumbs .content {
+    display: table-cell;
+    vertical-align: middle;
+    padding-left: 15px;
+}
+
+.promo-action {
+    max-width: 700px;
+    margin: 0 auto;
+    padding-left: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.promo-action .btn {
+    position: relative;
+    text-transform: uppercase;
+    border-radius: 0;
+    padding: 10px 40px;
+    font-size: 18px;
+    font-weight: 300;
+    cursor: pointer;
+    z-index: 2;
+    background: #ee0024;
+    border: 0;
+}
+
+.promo-action .btn:hover,
+.promo-action .btn:focus,
+.promo-action .btn:active{
+    background: #9e0000!important;
+}
+
+.promo-action .indicator-remind {
+    pointer-events: none;
+    border: solid 1px #ee0024;
+    background: transparent;
+}
+
+.promo-action span {
+    display: block;
+    font-size: 12px;
+}
+
 header {
     color: #fff;
 }
@@ -65,21 +169,6 @@ header .brand {
 }
 
 header .brand:hover, header .brand:focus, header .brand:active {
-}
-
-header nav {
-    margin: 0px 20px;
-    margin-top: 20px;
-}
-
-header nav a {
-    color: #fff;
-    text-transform: uppercase;
-}
-
-header nav a:hover, header nav a:focus, header nav a:active {
-    text-decoration: none;
-    color: #ee0024;
 }
 
 header .brand-bt {
@@ -102,6 +191,22 @@ header .brand-rchk {
     background-image: url(../img/logo-rchk.png);
 }
 
+header nav {
+    margin: 0px 20px;
+    margin-top: 15px;
+    white-space: nowrap;
+}
+
+header nav a {
+    color: #fff;
+    text-transform: uppercase;
+}
+
+header nav a:hover, header nav a:focus, header nav a:active {
+    text-decoration: none;
+    color: #ee0024;
+}
+
 header .contact {
     height: 72px;
     padding: 20px;
@@ -111,6 +216,7 @@ header .contact {
 
 header .contact .phone {
     display: block;
+    font-weight: 500;
 }
 
 header .contact a {
