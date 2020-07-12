@@ -2,27 +2,32 @@
 * Режим разработчика
 *
 */
-header, main, footer {
-    /*opacity: 0.5;*/
+body.debug header, body.debug main, body.debug footer {
+    opacity: 0.5;
 }
 
-.promo-container {
-    height: 613px;
-}
-
-/*body > div {
+body.debug > div {
     background-color: #fff;
     background-image: url('../img/site.jpg');
     background-position: center top;
     background-repeat: no-repeat;
     background-size: 1200px;
-}*/
+}
+
+
+.promo-container {
+    height: 613px;
+}
 
 body {
     background-color: #fff;
     background-image: url('../img/bg.png');
     background-position: center top;
     background-repeat: repeat;
+}
+
+header {
+    background-color: #000;
 }
 
 .promo-container {
@@ -43,4 +48,75 @@ body {
     background-repeat: no-repeat;
     background-size: auto 613px;
     background-position: top center;
+}
+
+header {
+    color: #fff;
+}
+
+header .brand {
+    display: inline-block;
+    height: 30px;
+    text-indent: -9999px;
+    margin: 5px 0px;
+    margin-right: 25px;
+    background-repeat: no-repeat;
+    background-size: auto 30px;
+}
+
+header .brand:hover, header .brand:focus, header .brand:active {
+}
+
+header nav {
+    margin: 0px 20px;
+    margin-top: 20px;
+}
+
+header nav a {
+    color: #fff;
+    text-transform: uppercase;
+}
+
+header nav a:hover, header nav a:focus, header nav a:active {
+    text-decoration: none;
+    color: #ee0024;
+}
+
+header .brand-bt {
+    width: 140px;
+    background-image: url(../img/logo-bt.png);
+}
+
+header .brand-dep {
+    width: 132px;
+    background-image: url(../img/logo-dep.png);
+}
+
+header .brand-agency {
+    width: 83px;
+    background-image: url(../img/logo-agency.png);
+}
+
+header .brand-rchk {
+    width: 89px;
+    background-image: url(../img/logo-rchk.png);
+}
+
+header .contact {
+    height: 72px;
+    padding: 20px;
+    line-height: 17px;
+    background: #ee0024;
+}
+
+header .contact .phone {
+    display: block;
+}
+
+header .contact a {
+    font-size: 13px;
+    color: #fff;
+}
+
+header .contact a:hover:focus:active {
 }
