@@ -137,6 +137,10 @@ main {
     border: 0;
 }
 
+.promo-action .indicator-remind {
+    text-transform: none;
+}
+
 .promo-action .btn:hover,
 .promo-action .btn:focus,
 .promo-action .btn:active{
