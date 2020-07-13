@@ -269,7 +269,7 @@ header {
     padding: 0px 0px;
     margin: 10px 0px 30px 0px;
     min-height: 215px;
-    min-width: 222px;
+    min-width: 220px;
 }
 
 .what h4 {
@@ -312,6 +312,30 @@ header {
 
 .whats .btn-send-order {
     margin: 0 auto;
+}
+
+.how-container {
+    position: relative;
+    background-image: url(../img/51.png);
+    background-repeat: no-repeat;
+    background-size: auto 613px;
+    background-position: top center;
+    min-height: 613px;
+}
+
+.how-container p {
+    font-weight: bold;
+    color: #ee0024;
+    text-transform: uppercase;
+}
+
+.how-container .content {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.how-container ul {
+    padding-left: 18px;
 }
 
 .container-block {
