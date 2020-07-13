@@ -135,7 +135,7 @@ header {
     padding-bottom: 10px;
 }
 
-.promo-action .btn {
+.btn-send-order {
     position: relative;
     text-transform: uppercase;
     border-radius: 0;
@@ -148,7 +148,7 @@ header {
     border: 0;
 }
 
-.promo-action .btn.disabled {
+.btn-send-order.disabled {
     background: #1f1f1f;
 }
 
@@ -156,9 +156,9 @@ header {
     text-transform: none;
 }
 
-.promo-action .btn:hover,
-.promo-action .btn:focus,
-.promo-action .btn:active{
+.btn-send-order:hover,
+.btn-send-order:focus,
+.btn-send-order:active{
     background: #9e0000!important;
 }
 
@@ -254,6 +254,7 @@ header {
 .whats {
     display: table;
     margin-bottom: 70px;
+    text-align: center;
 }
 
 .whats-list {
@@ -266,7 +267,7 @@ header {
     vertical-align: top;
     width: auto;
     padding: 0px 0px;
-    margin: 10px 0px;
+    margin: 10px 0px 30px 0px;
     min-height: 215px;
     min-width: 222px;
 }
@@ -307,6 +308,10 @@ header {
 
 .what .icon.icon-down {
     background-image: url(../img/down.png);
+}
+
+.whats .btn-send-order {
+    margin: 0 auto;
 }
 
 .container-block {
