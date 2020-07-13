@@ -175,6 +175,7 @@ header {
 
 .directions {
     display: table;
+    margin-bottom: 70px;
 }
 
 .directions-list {
@@ -247,6 +248,90 @@ header {
 
 .direction .icon.icon-7 {
     background-image: url(../img/18.png);
+}
+
+.container-block {
+    position: relative;
+    border: solid 2px #7f7f7f;
+    text-align: center;
+    margin-top: 45px;
+    margin-bottom: 70px;
+    padding: 30px 15px 15px 15px;
+}
+
+.container-block h3{
+    position: absolute;
+    min-width: 330px;
+    left: 50%;
+    margin-left: -165px;
+    top: -25px;
+    background-color: #fff;
+    padding: 5px 15px;
+}
+
+.terms .icon {
+    width: 100px;
+    height: 100px;
+    background-repeat: no-repeat;
+    background-size: 85%;
+    background-position: center center;
+    background-image: url(../img/19.png);
+}
+
+.terms h4 {
+    padding-top: 30px;
+    padding-left: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.terms ul {
+    padding-left: 27px;
+    font-size: 14px;
+}
+
+.term {
+    text-align: left;
+    background-repeat: no-repeat;
+    background-size: 30%;
+    background-position: center top;
+}
+
+.term-icon-1 {
+    background-size: 25%;
+    background-image: url(../img/28.png);
+}
+
+.term-icon-2 {
+    background-image: url(../img/29.png);
+}
+
+.term-icon-3 {
+    background-image: url(../img/30.png);
+}
+
+.term-dates {
+    padding-top: 30px;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-position: center top;
+    background-image: url(../img/50.png);
+}
+
+.term-date {
+    padding: 0px 25px 15px 25px;
+    line-height: 20px;
+    font-weight: bold;
+    text-align: right;
+}
+
+.terms .btn {
+    color: #ee0024;
+    text-transform: uppercase;
+    margin: 0 auto;
+    margin-top: 30px;
+    margin-bottom: 0px;
 }
 
 h3 {
