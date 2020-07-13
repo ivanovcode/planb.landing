@@ -1,5 +1,5 @@
 $( document ).ready(function() {
-    var end = new Date('07/12/2020 23:50');
+    var end = new Date('07/13/2020 8:32');
 
     monthA = 'января,февраля,марта,апреля,мая,июня,июля,августа,сентября,октября,ноября,декабря'.split(',');
     document.getElementById('date').innerHTML = end.getDate() + ' ' + monthA[end.getMonth()];

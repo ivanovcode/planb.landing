@@ -14,6 +14,21 @@ body.debug > div {
     background-size: 1200px;
 }
 
+body.demo main {
+    height: 3850px;
+    background-image: url('../img/landing.png');
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size:  1400px auto;
+}
+
+body.demo main * {
+    display: none;
+}
+
+body.demo footer {
+    display: none;
+}
 
 .promo-container {
     min-height: 613px;
@@ -156,6 +171,90 @@ header {
 .promo-action .note {
     display: block;
     font-size: 12px;
+}
+
+.directions {
+    display: table;
+}
+
+.directions-list {
+    display: table-row;
+}
+
+.direction {
+    float: left;
+    display: table-cell;
+    vertical-align: top;
+    width: auto;
+    border-right: solid 1px #808080;
+    padding: 0px 0px;
+    margin: 10px 0px;
+    min-height: 215px;
+    min-width: 155px;
+}
+
+.direction:last-child {
+    border-right: 0px;
+}
+
+.direction h4 {
+    text-transform: uppercase;
+    text-align: center;
+    padding: 15px 10px 10px 10px;
+    font-weight: bold;
+    font-size: 14px;
+    margin: 0px;
+}
+
+.direction h4 span {
+    display: block;
+    font-size: 10px;
+}
+
+.direction .icon {
+    display: block;
+    width: 125px;
+    height: 150px;
+    margin: 0 auto;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center center;
+}
+
+.direction .icon.icon-1 {
+    background-image: url(../img/12.png);
+}
+
+.direction .icon.icon-2 {
+    background-image: url(../img/13.png);
+}
+
+.direction .icon.icon-3 {
+    background-image: url(../img/14.png);
+}
+
+.direction .icon.icon-4 {
+    background-image: url(../img/15.png);
+}
+
+.direction .icon.icon-5 {
+    background-image: url(../img/16.png);
+}
+
+.direction .icon.icon-6 {
+    background-image: url(../img/17.png);
+}
+
+.direction .icon.icon-7 {
+    background-image: url(../img/18.png);
+}
+
+h3 {
+    text-transform: uppercase;
+    text-align: center;
+    padding: 30px 0px 15px 0px;
+    font-weight: bold;
+    margin-bottom: 0px;
 }
 
 header {
