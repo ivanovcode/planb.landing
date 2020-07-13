@@ -250,12 +250,71 @@ header {
     background-image: url(../img/18.png);
 }
 
+
+.whats {
+    display: table;
+    margin-bottom: 70px;
+}
+
+.whats-list {
+    display: table-row;
+}
+
+.what {
+    float: left;
+    display: table-cell;
+    vertical-align: top;
+    width: auto;
+    padding: 0px 0px;
+    margin: 10px 0px;
+    min-height: 215px;
+    min-width: 222px;
+}
+
+.what h4 {
+    text-align: center;
+    padding: 15px 10px 10px 10px;
+    font-size: 14px;
+    margin: 0px;
+}
+
+.what h4 span {
+    display: block;
+    font-size: 10px;
+}
+
+.what .icon {
+    display: block;
+    width: 175px;
+    height: 175px;
+    margin: 0 auto;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center center;
+}
+
+.what .icon.icon-left {
+    background-image: url(../img/left.png);
+}
+
+.what .icon.icon-right {
+    background-image: url(../img/right.png);
+}
+
+.what .icon.icon-top {
+    background-image: url(../img/top.png);
+}
+
+.what .icon.icon-down {
+    background-image: url(../img/down.png);
+}
+
 .container-block {
     position: relative;
     border: solid 2px #7f7f7f;
     text-align: center;
     margin-top: 45px;
-    margin-bottom: 70px;
+    margin-bottom: 25px;
     padding: 30px 15px 15px 15px;
 }
 
