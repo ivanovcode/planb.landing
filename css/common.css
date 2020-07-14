@@ -343,6 +343,86 @@ header {
     margin-bottom: 10px;
 }
 
+
+.executives {
+    margin-top: 10px;
+}
+
+.executives h4 {
+    padding-top: 10px;
+    font-size: 18px;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: #ee0024;
+}
+
+.executive-item {
+    padding: 10px;
+}
+
+.executive {
+    padding: 10px;
+    min-height: 226px;
+}
+
+.executive img {
+    width: auto;
+    height: 150px;
+    margin: 0 auto;
+}
+
+.executives-container {
+    position: relative;
+}
+
+.executives-container p {
+    font-size: 14px;
+    font-weight: bold;
+    color: #ee0024;
+    text-transform: uppercase;
+}
+
+.faq .accordion {
+    background: #EDEDED;
+    padding: 10px;
+    padding-bottom: 15px;
+}
+
+.faq .card {
+    border: 0;
+    border-radius: 0;
+    background: #EDEDED;
+}
+
+.faq .card-header {
+    padding: 0px 5px;
+    padding-top: 5px;
+    margin-bottom: 0px;
+    background: #EDEDED;
+    border-bottom: 0px;
+}
+
+.faq .btn {
+    font-size: 18px;
+    color: #ee0024;
+    font-weight: bold;
+    text-decoration: none;
+    background-image: url(../img/plus.png);
+    background-repeat: no-repeat;
+    background-position: top left;
+    padding-left: 30px;
+}
+
+.faq .btn.collapsed {
+    background-image: url(../img/minus.png);
+}
+
+.faq .card-body {
+    font-size: 14px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
 .container-block {
     position: relative;
     border: solid 2px #7f7f7f;
