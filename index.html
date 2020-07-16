@@ -3,10 +3,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/jquery.fancybox.min.css">
     <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/flip-box.min.css">
+    <link rel="stylesheet" href="css/jquery.bxslider.css">
+    <link rel="stylesheet" href="css/common.css">
     <title>RESTART 360 — Это мощная акселерационная программа для пересборки бизнеса.</title>
     <link rel="apple-touch-icon" sizes="76x76" href="favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
@@ -16,20 +18,30 @@
     <meta name="theme-color" content="#ffffff">
 </head>
 <body class="">
-<div>
+<div class="div_body">
 <header>
     <div class="d-flex flex-column flex-md-row align-items-center px-md-4">
-        <div class="mr-md-auto p-3">
+        <div class="mobile_menu mobile_close">
+            <div class="mobile_menu_btn"><div></div></div>
+            <div class="mobile_menu_block">
+                <a class="p-2 mobile_menu_close" href="#"><svg style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path fill="#fff" d="M443.6,387.1L312.4,255.4l131.5-130c5.4-5.4,5.4-14.2,0-19.6l-37.4-37.6c-2.6-2.6-6.1-4-9.8-4c-3.7,0-7.2,1.5-9.8,4  L256,197.8L124.9,68.3c-2.6-2.6-6.1-4-9.8-4c-3.7,0-7.2,1.5-9.8,4L68,105.9c-5.4,5.4-5.4,14.2,0,19.6l131.5,130L68.4,387.1  c-2.6,2.6-4.1,6.1-4.1,9.8c0,3.7,1.4,7.2,4.1,9.8l37.4,37.6c2.7,2.7,6.2,4.1,9.8,4.1c3.5,0,7.1-1.3,9.8-4.1L256,313.1l130.7,131.1  c2.7,2.7,6.2,4.1,9.8,4.1c3.5,0,7.1-1.3,9.8-4.1l37.4-37.6c2.6-2.6,4.1-6.1,4.1-9.8C447.7,393.2,446.2,389.7,443.6,387.1z"/></svg></a>
+                <a class="p-2 scroll_to" href="#terms">Участие</a>
+                <a class="p-2 scroll_to" href="#how">Программа</a>
+                <a class="p-2 scroll_to" href="#executives">Эксперты</a>
+                <a class="p-2 scroll_to" href="#faq">FAQ</a>
+            </div>
+        </div>
+        <div class="mr-md-auto p-3 text-nowrap">
             <div class="brand brand-bt">Бизнес Техноград</div>
             <div class="brand brand-dep">Департаменд предпринимательства и развития города Москвы</div>
             <div class="brand brand-agency">Агентство инноваций города Москвы</div>
             <div class="brand brand-rchk">Развитие человеческого капитала</div>
         </div>
         <nav>
-            <a class="p-2" href="#">Участие</a>
-            <a class="p-2" href="#">Программа</a>
-            <a class="p-2" href="#">Эксперты</a>
-            <a class="p-2" href="#">FAQ</a>
+            <a class="p-2 scroll_to" href="#terms">Участие</a>
+            <a class="p-2 scroll_to" href="#how">Программа</a>
+            <a class="p-2 scroll_to" href="#executives">Эксперты</a>
+            <a class="p-2 scroll_to" href="#faq">FAQ</a>
         </nav>
         <div class="contact">
             <span class="phone">+7 (495) 916 11 54</span>
@@ -75,7 +87,7 @@
             <div class="promo-action">
                 <div class="row no-gutters">
                     <div class="col-md-6">
-                        <a href="#" class="btn btn-primary my-2 btn-send-order">Оставить заявку</a>
+                        <a data-fancybox data-src="#modal" data-touch="false"href="javascript:;" class="btn btn-primary my-2 btn-send-order">Оставить заявку</a>
                         <div class="note">Приём заявок до <span id="date">25 августа</span></div>
                     </div>
                     <div class="col-md-6">
@@ -91,7 +103,7 @@
     <div class="container">
         <h3>Направления</h3>
         <div class="directions">
-            <div class="directions-list">
+            <div class="directions-list bx_2_slide">
                 <div class="direction">
                     <span class="icon icon-1"></span>
                     <h4>Образование</h4>
@@ -123,19 +135,19 @@
             </div>
         </div>
     </div>
-    <div class="container container-block">
+    <div class="container container-block" id="terms">
         <h3>Условия участия</h3>
         <div class="terms">
-            <div class="row no-gutters">
+            <div class="row no-gutters bx_1_slide">
                 <div class="col-md-4 term term-icon-1">
                     <div class="row no-gutters">
                           <div class="icon"></div>
                           <div class="col d-flex flex-column">
-                            <h4>Вы собственник малого  или среднего бизнеса в реальном секторе: </h4>
+                            <h4>Вы собственник малого или среднего бизнеса в реальном секторе: </h4>
                             <ul>
                                 <li>Вы готовы выделять минимум 15 часов в неделю на участие в программе</li>
                                 <li>Вы готовы лично вкладываться в работу над изменением своего бизнеса</li>
-                                <li>Вы готов адаптироваться и прислушиваться к экспертизе</li>
+                                <li>Вы готовы адаптироваться и прислушиваться к экспертизе</li>
                             </ul>
                         </div>
                     </div>
@@ -177,7 +189,7 @@
     <div class="container">
         <h3>Что получат участники</h3>
         <div class="whats">
-            <div class="whats-list">
+            <div class="whats-list bx_2_slide">
                 <div class="what">
                     <span class="icon icon-right"></span>
                     <h4>Пересобранную<br> бизнес-модель<br> с фокусом на онлайн</h4>
@@ -199,11 +211,11 @@
                     <h4>Дорожную карту для<br> работы и внедрения<br> инноваций на 1-6<br> месяцев</span></h4>
                 </div>
             </div>
-            <a href="#" class="btn btn-primary my-2 btn-send-order">Оставить заявку</a>
+            <a data-fancybox data-src="#modal" data-touch="false"href="javascript:;" class="btn btn-primary my-2 btn-send-order">Оставить заявку</a>
         </div>
     </div>
 
-    <div class="how-container">
+    <div class="how-container" id="how">
         <div class="container">
             <h3>Как проходит обучение</h3>
             <div class="content">
@@ -222,80 +234,182 @@
                     </ul>
                 </div>
             <div class="hows">
-                    <div class="row">
-                        <div class="col-md-3 how-item">
-                            <div class="how full">
+                    <div class="row bx_1_slide">
+                        <div class="col-md-3 bod-flip-box lift-flip">
+                          <div class="how-item flip-inner addEffect">
+                            <div class="how flip-front">
+                                <img class="img-fluid" src="img/31.png">
+                                <h4>Неделя 1</h4>
+                                <span class="discription">Рынки и вызовы</span>
+                            </div>
+                            <div class="how flip-back full">
                                 <span class="discription">
                                     <ul>
-                                        <li>Технологическая революция/ и изменение инвестиционных стратегий в условиях трансформации. Что присходит на рынках?</li>
-                                        <li>Возможности кратного роста: новые сценарии будущего.</li>
-                                        <li>Работа с командой. Как собраться и настроиться на нужную волну. Техники быстрой мобилизации.</li>
+                                        <li>Технологическая революция и изменение инвестиционных стратегий в условиях трансформации. Что присходит на рынках?</li>
+                                        <li>Возможности кратного роста: новые сценарии будущего</li>
+                                        <li>Работа с командой. Как собраться и настроиться на нужную волну. Техники быстрой мобилизации.</li>
+                                        <li>Бизнес-кейсы от успешных предпринимателей</li>
+                                        <li>Практическая сессия ответов на вопросы и разбор кейсов участников</li>
                                     </ul>
                                 </span>
                             </div>
+                            </div>
                         </div>
-                        <div class="col-md-3 how-item">
-                            <div class="how">
-                                <img class="img-fluid" src="img/31.png">
+                        <div class="col-md-3 bod-flip-box lift-flip">
+                          <div class="how-item flip-inner addEffect">
+                            <div class="how flip-front">
+                                <img class="img-fluid" src="img/32.png">
                                 <h4>Неделя 2</h4>
                                 <span class="discription">Технологии и модели поведения</span>
                             </div>
-                        </div>
-                        <div class="col-md-3 how-item">
-                            <div class="how">
-                                <img class="img-fluid" src="img/32.png">
-                                <h4>Неделя 3</h4>
-                                <span class="discription">Технологии и модели поведения</span>
+                            <div class="how flip-back full">
+                                <span class="discription">
+                                    <ul>
+                                        <li>Смена моделей социального поведения и потребительских сценариев – что это значит для бизнеса? (на примере разных отраслей)</li>
+                                        <li>Возможности кратного роста: новые сценарии будущего</li>
+                                        <li>Работа с командой. Новые смыслы. Изолированы вместе. Как правильно работать удаленно.</li>
+                                        <li>Бизнес-кейсы от успешных предпринимателей</li>
+                                        <li>Практическая сессия ответов на вопросы и разбор кейсов участников</li>
+                                    </ul>
+                                </span>
+                            </div>
                             </div>
                         </div>
-                        <div class="col-md-3 how-item">
-                            <div class="how">
+                        <div class="col-md-3 bod-flip-box lift-flip">
+                          <div class="how-item flip-inner addEffect">
+                            <div class="how flip-front">
                                 <img class="img-fluid" src="img/33.png">
-                                <h4>Неделя 4</h4>
+                                <h4>Неделя 3</h4>
                                 <span class="discription">Трансформация – новое виденье бизнеса</span>
                             </div>
+                            <div class="how flip-back full">
+                                <span class="discription">
+                                    <ul>
+                                        <li>Атрибуты х10 в эпоху перемен – как применять (10 атрибутов, делим по 5 на каждую сессию)</li>
+                                        <li>Ключевые клиенты и стратегии поведения.</li>
+                                        <li>Работа с командой: практика стратегирования, новые фокусы внимания и инструменты лидера в условиях изменений.</li>
+                                        <li>Бизнес-кейсы от успешных предпринимателей</li>
+                                        <li>Практическая сессия ответов на вопросы и разбор кейсов участников</li>
+                                    </ul>
+                                </span>
+                            </div>
+                            </div>
                         </div>
-                        <div class="col-md-3 how-item">
-                            <div class="how">
+                        <div class="col-md-3 bod-flip-box lift-flip">
+                          <div class="how-item flip-inner addEffect">
+                            <div class="how flip-front">
                                 <img class="img-fluid" src="img/34.png">
-                                <h4>Неделя 5</h4>
+                                <h4>Неделя 4</h4>
                                 <span class="discription">Бизнес модель</span>
                             </div>
+                            <div class="how flip-back full">
+                                <span class="discription">
+                                    <ul>
+                                        <li>Новые бизнес-модели: как устроены и как перейти? (на примере разных отраслей)</li>
+                                        <li>Клиентоцентричные компании: ключевые принципы работы</li>
+                                        <li>Работа с командой: достижение результата в трудных условиях. Скорость доверия и взаимная ответственность.</li>
+                                        <li>Бизнес-кейсы от успешных предпринимателей</li>
+                                        <li>Практическая сессия ответов на вопросы и разбор кейсов участников</li>
+                                    </ul>
+                                </span>
+                            </div>
+                            </div>
                         </div>
-                        <div class="col-md-3 how-item">
-                            <div class="how">
+                        <div class="col-md-3 bod-flip-box lift-flip">
+                          <div class="how-item flip-inner addEffect">
+                            <div class="how flip-front">
                                 <img class="img-fluid" src="img/35.png">
-                                <h4>Неделя 6</h4>
+                                <h4>Неделя 5</h4>
                                 <span class="discription">Продукты и решения</span>
                             </div>
+                            <div class="how flip-back full">
+                                <span class="discription">
+                                    <ul>
+                                        <li>Новые продукты и решения: с чего начинать и как создавать? Техники проверки гипотез и запуска пилотных проектов.</li>
+                                        <li>Сообщества - новое место силы.</li>
+                                        <li>Работа с командой: компания как сеть удаленных команд. Построение эффективных партнерств.</li>
+                                        <li>Бизнес-кейсы от успешных предпринимателей</li>
+                                        <li>Практическая сессия ответов на вопросы и разбор кейсов участников</li>
+                                    </ul>
+                                </span>
+                            </div>
+                            </div>
                         </div>
-                        <div class="col-md-3 how-item">
-                            <div class="how">
+                        <div class="col-md-3 bod-flip-box lift-flip">
+                          <div class="how-item flip-inner addEffect">
+                            <div class="how flip-front">
                                 <img class="img-fluid" src="img/36.png">
-                                <h4>Неделя 7</h4>
+                                <h4>Неделя 6</h4>
                                 <span class="discription">Алгоритмы и процессы</span>
                             </div>
-                        </div>
-                        <div class="col-md-3 how-item">
-                            <div class="how">
-                                <img class="img-fluid" src="img/37.png">
-                                <h4>Неделя 8</h4>
-                                <span class="discription">Организационная модель</span>
+                            <div class="how flip-back full">
+                                <span class="discription">
+                                    <ul>
+                                        <li>Ключевые бизнес процессы: эффекты, результаты, показатели</li>
+                                        <li>Новые модели коммуникаций: как организовывать и управлять</li>
+                                        <li>Работа с командой: фокус на клиенте, технология генеративных интервью для быстрого выхода в новые ниши.</li>
+                                        <li>Бизнес-кейсы от успешных предпринимателей</li>
+                                        <li>Практическая сессия ответов на вопросы и разбор кейсов участников</li>
+                                    </ul>
+                                </span>
+                            </div>
                             </div>
                         </div>
+                        <div class="col-md-3 bod-flip-box lift-flip">
+                          <div class="how-item flip-inner addEffect">
+                            <div class="how flip-front">
+                                <img class="img-fluid" src="img/37.png">
+                                <h4>Неделя 7</h4>
+                                <span class="discription">Организационная модель</span>
+                            </div>
+                            <div class="how flip-back full">
+                                <span class="discription">
+                                    <ul>
+                                        <li>Модели управления, автономность, партнерства.</li>
+                                        <li>Оценка ресурсов: люди, время, деньги</li>
+                                        <li>Сила лидера: 7 стратегий повышения уровня энергии руководителя. Как мотивировать себя и команду.</li>
+                                        <li>Бизнес-кейсы от успешных предпринимателей</li>
+                                        <li>Практическая сессия ответов на вопросы и разбор кейсов участников</li>
+                                    </ul>
+                                </span>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 bod-flip-box lift-flip">
+                          <div class="how-item flip-inner addEffect">
+                            <div class="how flip-front">
+                                <img class="img-fluid" src="img/37.png">
+                                <h4>Неделя 8</h4>
+                                <span class="discription">Ресурсы и партнёры</span>
+                            </div>
+                            <div class="how flip-back full">
+                                <span class="discription">
+                                    <ul>
+                                        <li>Как привлекать инвестиции и партнеров в ситуации неопределенности?</li>
+                                        <li>Требования к проектам для привлечения инвестиций</li>
+                                        <li>Скорость развития: личная траектория развития лидера и формирование команды взаимного развития.</li>
+                                        <li>Бизнес-кейсы от успешных предпринимателей</li>
+                                        <li>Практическая сессия ответов на вопросы и разбор кейсов участников</li>
+                                    </ul>
+                                </span>
+                            </div>
+                            </div>
+                        </div>
+
+
                     </div>
                 </div>
             <div class="text-center">
-                    <a href="#" class="btn btn-primary btn-send-order">Оставить заявку</a>
+                    <a data-fancybox data-src="#modal" data-touch="false"href="javascript:;" class="btn btn-primary btn-send-order">Оставить заявку</a>
                 </div>
          </div>
     </div>
 
-    <div class="executives-container">
+    <div class="executives-container" id="executives">
         <div class="container">
             <h3>Руководители проектных треков</h3>
             <div class="executives">
-                <div class="row">
+                <div class="row bx_1_slide">
                     <div class="col-md-3 executive-item">
                         <div class="executive">
                             <img src="img/38.png">
@@ -357,7 +471,7 @@
         </div>
     </div>
 
-    <div class="container faq">
+    <div class="container faq" id="faq">
         <h3>FAQ</h3>
         <div class="accordion" id="accordionExample">
             <div class="card z-depth-0 bordered">
@@ -372,8 +486,7 @@
                 <div id="collapseQuestion-1" class="collapse show" aria-labelledby="headingOne"
                      data-parent="#accordionExample">
                     <div class="card-body">
-                        Онлайн-акселератор “Restart 360” - инициатива Департамента предпринимательства и инновационного развития города Москвы. Главная цель программы - помочь представителям малого и среднего бизнеса в трансформации бизнеса, дать им возможность
-                        перезагрузиться, пересобрать свои бизнес-процессы и сформировать некий «Restart 360» в экономически нестабильное время.
+                        Онлайн-акселератор “Restart 360”  - инициатива Департамента предпринимательства и инновационного развития города Москвы. Главная цель программы - помочь представителям малого и среднего бизнеса в трансформации бизнеса, дать им возможность перезагрузиться, пересобрать свои бизнес-процессы и сформировать некий «Restart 360» в экономически нестабильное время.
                     </div>
                 </div>
             </div>
@@ -382,13 +495,13 @@
                     <h5 class="mb-0">
                         <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
                                 data-target="#collapseQuestion-2" aria-expanded="false" aria-controls="collapseQuestion-2">
-                            Где проходят лекции и можно ли присутствовать на них лично?
+                            Где проходят сессии и можно ли присутствовать на них лично?
                         </button>
                     </h5>
                 </div>
                 <div id="collapseQuestion-2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                     <div class="card-body">
-                        ...
+                        Все сессии будут проходить в онлайн формате. Вы можете находится в любой точке мира, вам нужно лишь иметь устройство с выходом в интернет.
                     </div>
                 </div>
             </div>
@@ -397,13 +510,13 @@
                     <h5 class="mb-0">
                         <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
                                 data-target="#collapseQuestion-3" aria-expanded="false" aria-controls="collapseQuestion-3">
-                            Будет ли запись лекции, если я пропущу онлайн-трансляцию?
+                            Будет ли запись, если я пропущу онлайн-трансляцию?
                         </button>
                     </h5>
                 </div>
                 <div id="collapseQuestion-3" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                     <div class="card-body">
-                        ...
+                        Да, все лекции записываются и выкладываются на платформу обучения в течение 3-х дней после прямой трансляции.
                     </div>
                 </div>
             </div>
@@ -418,7 +531,7 @@
                 </div>
                 <div id="collapseQuestion-4" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                     <div class="card-body">
-                        ...
+                        Программа длится 8 недель, 2 месяца.
                     </div>
                 </div>
             </div>
@@ -433,7 +546,7 @@
                 </div>
                 <div id="collapseQuestion-5" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                     <div class="card-body">
-                        ...
+                        Необходимо заполнить заявку на участие, анкету и пройти отбор на программу. В случае успешного отбора, программа будет для Вас бесплатной.
                     </div>
                 </div>
             </div>
@@ -448,7 +561,7 @@
                 </div>
                 <div id="collapseQuestion-6" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                     <div class="card-body">
-                        ...
+                        Прием заявок заканчивается 25 августа 2020 г. включительно. Заявки, отправленные позже указанного срока, рассматриваться не будут.
                     </div>
                 </div>
             </div>
@@ -463,7 +576,15 @@
                 </div>
                 <div id="collapseQuestion-7" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                     <div class="card-body">
-                        ...
+                        Вы проходите предварительный отбор, если:<br>
+                        <ul>
+                            <li>Ваша заявка отвечает на все обязательные вопросы формы, анкеты;</li>
+                            <li>Ваш бизнес соответствует заявленным направлениям;</li>
+                            <li>Ваш бизнес нуждается в помощи экспертов данной акселерационной программы;</li>
+                            <li>У вас есть юр.лицо в Москве или вы готовы зарегистрировать его в течение программы.</li>
+                            <li>Ваш бизнес соответствует условиям участия в программе.</li>
+                            <li>Более подробно ознакомиться с критериями и этапами отбора вы можете в Полных правилах</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -478,7 +599,13 @@
                 </div>
                 <div id="collapseQuestion-8" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                     <div class="card-body">
-                        ...
+                        <ul>
+                            <li>Заполнить форму заявки в полном объеме</li>
+                            <li>Сформировать команду развития внутри своей компании</li>
+                            <li>Активно участвовать в программе</li>
+                            <li>Своевременно и с полной отдачей выполнять домашние задания</li>
+                            <li>Регулярно давать обратную связь по ходу прохождения программы</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -493,7 +620,7 @@
                 </div>
                 <div id="collapseQuestion-9" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                     <div class="card-body">
-                        ...
+                        Участник исключается из акселератора, если не выполняет более 2-х домашних заданий и не прорабатывает гипотезы.
                     </div>
                 </div>
             </div>
@@ -508,7 +635,7 @@
                 </div>
                 <div id="collapseQuestion-10" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                     <div class="card-body">
-                        ...
+                        До конца приема заявок мы отправим всем участникам уведомление о результатах отбора. Если вы не получили письмо, проверьте спам или напишите нам почту  restart360@develop.mos.ru
                     </div>
                 </div>
             </div>
@@ -536,32 +663,142 @@
 <footer>
     <div class="container">
         <div class="row">
-            <div class="col-6 col-md">
+            <div class="col-md-6 col-md">
+                <div class="mr-md-auto p-3 text-nowrap brand-list">
+                    <div class="brand brand-bt">Бизнес Техноград</div>
+                    <div class="brand brand-dep">Департаменд предпринимательства и развития города Москвы</div>
+                    <div class="brand brand-agency">Агентство инноваций города Москвы</div>
+                    <div class="brand brand-rchk">Развитие человеческого капитала</div>
+                </div>
+            </div>
+            <div class="col-md-2">
                 <ul class="list-unstyled text-small">
-                    <li><a href="#">Критерий оценки</a></li>
-                    <li><a href="#">Положение</a></li>
-                    <li><a href="#">Текст</a></li>
-                    <li><a href="#">Текст</a></li>
+                    <li><a href="#terms">Участие</a></li>
+                    <li><a href="#how">Программа</a></li>
+                    <li><a href="#executives">Эксперты</a></li>
+                    <li><a href="#faq">FAQ</a></li>
                 </ul>
             </div>
-            <div class="col-6 col-md">
+            <div class="col-md-2">
+                <ul class="list-unstyled text-small">
+                    <li><a href="#terms">Пользовательское соглашение</a></li>
+                    <li><a href="#how">Полные правила участия</a></li>
+                </ul>
             </div>
-            <div class="col-6 col-md">
-            </div>
-            <div class="col-12 col-md">
+            <div class="col-md-2">
                 <small class="d-block mb-3">
                     Политика конфиденциальности<br>
                     АНО “РЧК” ©2020<br>
-                    © 2017-2020
                 </small>
             </div>
         </div>
     </div>
 </footer>
 </div>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<div id="to_top">
+
+  <svg version="1.1" width="20" height="20" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 451.846 451.847" style="enable-background:new 0 0 451.846 451.847;" xml:space="preserve"><g><path fill="#fff"d="M345.441,248.292L151.154,442.573c-12.359,12.365-32.397,12.365-44.75,0c-12.354-12.354-12.354-32.391,0-44.744 L278.318,225.92L106.409,54.017c-12.354-12.359-12.354-32.394,0-44.748c12.354-12.359,32.391-12.359,44.75,0l194.287,194.284 c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,248.292z"/></g></svg>
+
+</div>
+<div style="display: none;" id="modal">
+  <div class="modal_form">
+    <div class="modal_form_step_1 modal_form_step">
+      <div class="modal_form_title">1 ЭТАП</div>
+      <div class="modal_form_input">
+        <input type="text" placeholder="ФИО">
+      </div>
+      <div class="modal_form_input">
+        <input type="text" placeholder="Телефон">
+      </div>
+      <div class="modal_form_input">
+        <input type="text" placeholder="E-mail">
+      </div>
+      <div class="modal_form_radio">
+        <div class="modal_form_radio_text">
+          <b>Название</b> (Выбрать 1 из 7)
+        </div>
+          <label>
+            <span class="icon icon-1"></span>
+            <span class="mfrt_t">ОБРАЗОВАНИЕ</span>
+            <input type="radio" name="modal_form_radio">
+            <i></i>
+          </label>
+          <label>
+            <span class="icon icon-2"></span>
+            <span class="mfrt_t">RETAIL</span>
+            <input type="radio" name="modal_form_radio">
+            <i></i>
+          </label>
+          <label>
+            <span class="icon icon-3"></span>
+            <span class="mfrt_t">КРАСОТА И МОДА</span>
+            <input type="radio" name="modal_form_radio">
+            <i></i>
+          </label>
+          <label>
+            <span class="icon icon-4"></span>
+            <span class="mfrt_t">УМНЫЙ ГОРОД</span>
+            <input type="radio" name="modal_form_radio">
+            <i></i>
+          </label>
+          <label>
+            <span class="icon icon-5"></span>
+            <span class="mfrt_t">ТУРИЗМ</span>
+            <input type="radio" name="modal_form_radio">
+            <i></i>
+          </label>
+          <label>
+            <span class="icon icon-6"></span>
+            <span class="mfrt_t">ЗДОРОВЬЕ</span>
+            <input type="radio" name="modal_form_radio">
+            <i></i>
+          </label>
+          <label>
+            <span class="icon icon-7"></span>
+            <span class="mfrt_t">РАЗВЛЕЧЕНИЯ</span>
+            <input type="radio" name="modal_form_radio">
+            <i></i>
+          </label>
+      </div>
+      <div class="modal_form_checkbox">
+        <label>
+          <input type="checkbox">
+          <span class="mfrt_t">Я принимаю условия соглашения по обработке данных</span>
+        </label>
+      </div>
+      <div class="modal_form_btn">
+        <div class="modal_form_next modal_form_btn_a">ДАЛЕЕ</div>
+      </div>
+    </div>
+    <div class="modal_form_step_2 modal_form_step">
+      <div class="modal_form_title">2 ЭТАП</div>
+      <div class="modal_form_input">
+        <input type="text" placeholder="Название компании">
+      </div>
+      <div class="modal_form_input">
+        <input type="text" placeholder="ИНН">
+      </div>
+      <div class="modal_form_input">
+        <input type="text" placeholder="Описание компании">
+      </div>
+      <div class="modal_form_input">
+        <input type="text" placeholder="Название строки">
+      </div>
+      <div class="modal_form_input">
+        <input type="text" placeholder="Название строки">
+      </div>
+      <div class="modal_form_btn">
+        <input type="submit" class="modal_form_send modal_form_btn_a" value="ОТПРАВИТЬ ЗАЯВКУ">
+      </div>
+    </div>
+  </div>
+</div>
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.fancybox.min.js"></script>
+<script src="js/flip-box.js"></script>
+<script src="js/jquery.bxslider.min.js"></script>
 <script src="js/common.js"></script>
 </body>
 </html>
