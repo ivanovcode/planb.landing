@@ -809,7 +809,7 @@ footer .col-md-2 ul li {
   border:0px solid #6d6d6d;
   width:100%;
   height:50px;
-  padding:20px;
+  padding:0px 20px;
   font-size:14px;
 }
 .modal_form_radio {
@@ -907,7 +907,7 @@ footer .col-md-2 ul li {
   height:20px;
   line-height:20px;
   color:#fff;
-  font-size:12px;
+  font-size:11px;
   position:relative;
   padding-left:30px;
 }
@@ -963,9 +963,9 @@ footer .col-md-2 ul li {
   border: 0;
   color:#fff;
 }
-.modal_form_btn_a:hover,
-.modal_form_btn_a:focus,
-.modal_form_btn_a:active{
+.modal_form_btn_a:hover:not(.disabled),
+.modal_form_btn_a:focus:not(.disabled),
+.modal_form_btn_a:active:not(.disabled){
   background: #9e0000!important;
 }
 .modal_form_title {
@@ -976,9 +976,17 @@ footer .col-md-2 ul li {
   text-transform: uppercase;
   color: #ee0024;
 }
-.modal_form_step_2 {
+
+.modal_form_step_2, .modal_form_step_3 {
   display:none;
 }
+
+.modal_form_step_3 {
+    color: #fff;
+    font-size: 18px;
+    text-align: left;
+}
+
 .mobile_menu {
   display:none;
 }
@@ -1352,3 +1360,167 @@ footer .col-md-2 ul li {
     font-size: 12px;
   }
 }
+
+
+.modal_form a {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.modal_form a:hover,
+.modal_form a:focus,
+.modal_form a:active{
+    color: #ee0024;
+}
+
+.btn-next.disabled {
+    pointer-events: none;
+    background: #1f1f1f;
+    color: #6f6f6f;
+}
+
+
+.input-wrapper {
+    position: relative;
+}
+
+.input-wrapper:after {
+    display: none;
+    height: 50px;
+    position: absolute;
+    right: 0;
+    padding-left: 20px;
+    padding-right: 15px;
+    font-family: 'FontAwesome';
+    content: "\f040";
+    line-height: 50px;
+}
+
+.input-wrapper input {
+    font-weight: bold;
+    color: #2b2b2b;
+    font-size: 14px;
+}
+
+.input-wrapper.status-success input {
+    background: #e0ecde;
+    -webkit-box-shadow: inset 0 0 0 50px #e0ecde;
+    -webkit-text-fill-color: #000;
+}
+
+.input-wrapper.status-success:after {
+    display: inline-block;
+    content: "\f00c";
+    color: #4ba53c;
+}
+
+.input-wrapper.status-rejected input {
+    background: #f7e1e1;
+    color: #ff001c;
+}
+
+.input-wrapper.status-rejected:after {
+    display: inline-block;
+    content: "\f00d";
+    color: #ff001c;
+}
+
+.label-block {
+    height: 50px;
+    display: flex;
+    font-size: 16px;
+    justify-content: center;
+    align-items: center;
+    background: #ebebeb;
+    flex-direction: column;
+}
+
+.button.disabled, .modal_form_send.disabled {
+    pointer-events: none;
+    background: #1f1f1f;
+    color: #6f6f6f;
+}
+
+.button {
+    width: 100%;
+    display: inline-block;
+    margin: auto;
+    position: relative;
+    text-transform: uppercase;
+    border-radius: 0;
+    height: 50px;
+    line-height: 50px;
+    padding: 0px 15px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 300;
+    cursor: pointer;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    z-index: 2;
+    background: #ee0024;
+    border: 0;
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.button.file {
+    background: #ee0024;
+}
+
+.button.file-active {
+    text-align: left;
+    padding-right: 65px;
+    /*pointer-events: none;*/
+    background: #ee0024;
+}
+
+.button:after {
+    cursor: pointer;
+    display: none;
+    height: 50px;
+    position: absolute;
+    right: 0;
+    padding-left: 20px;
+    padding-right: 15px;
+    font-family: 'FontAwesome';
+    content: "\f040";
+    line-height: 50px;
+    z-index: 2;
+}
+
+.button.file-active:after {
+    display: inline-block;
+    content: "\f00c";
+    color: #fff;
+}
+
+.button:hover:after,
+.button:focus:after,
+.button:active:after{
+    /*color: #000;*/
+}
+
+.button:hover:not(.disabled),
+.button:focus:not(.disabled),
+.button:active:not(.disabled){
+    background: #9e0000;
+}
+
+.input {
+    background: #ebebeb;
+    border: 0px solid #6d6d6d;
+    width: 100%;
+    height: 50px;
+    padding: 0px 20px;
+    font-size: 14px;
+}
+
+ .rows .row {
+     margin-top: 20px;
+ }

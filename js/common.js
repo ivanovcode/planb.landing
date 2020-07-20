@@ -1,5 +1,271 @@
+function addListenerMulti(el, s, fn) {
+    s.split(' ').forEach(e => el.addEventListener(e, fn, false));
+}
+
+function debouncer(fn, timeout) {
+    var timeoutID , timeout = timeout || 200;
+    return function () {
+        var scope = this , args = arguments;
+        clearTimeout( timeoutID );
+        timeoutID = setTimeout( function () {
+            fn.apply( scope , Array.prototype.slice.call( args ) );
+        } , timeout );
+    }
+}
+
+function myObjDown(event) {
+    if (el !== event.target) return;
+}
+
+function validateReg(txt, re) {
+    return re.test(txt);
+}
+
+function validateFio(e) {
+    let value = e.value.trim();
+    let minlength = e.getAttribute("minlength");
+
+    let re = /^[А-ЯA-Z][а-яa-zА-ЯA-Z\-]{0,}\s[А-ЯA-Z][а-яa-zА-ЯA-Z\-]{1,}(\s[А-ЯA-Z][а-яa-zА-ЯA-Z\-]{1,})?$/;
+
+    if(value.length < minlength || !validateReg(value, re)) {
+        return false;
+    }
+    return true;
+}
+
+function validatePhone(e) {
+    let value = e.value.replace(/[^+\d]/g, '');
+    let minlength = e.getAttribute("minlength");
+
+    let re = /^((\+7|7|8)+([0-9]){10})$/;
+
+    if(value.length < minlength || !validateReg(value, re)) {
+        return false;
+    }
+
+    return true;
+}
+
+function validateEmail(e) {
+    let value = e.value;
+    let minlength = e.getAttribute("minlength");
+
+    let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+    if(value.length < minlength || !validateReg(value, re)) {
+        return false;
+    }
+
+    return true;
+}
+
+function validateSegment(e) {
+    let re = /^\s*(\S\s*){3,20}$/;
+
+    if(e && validateReg(e.value, re)) {
+        return true;
+    }
+    return false;
+}
+
+function validateAgree(e) {
+    if (e.checked) {
+        return true;
+    }
+    return false;
+}
+
+function validateInn(e) {
+    let value = e.value;
+    let re = /^\d{10}|\d{12}$/;
+
+    if(!validateReg(value, re)) {
+        return false;
+    }
+
+    return true;
+}
+
+function validateReport(e) {
+    let value = e.value;
+    let re = /^(?:\d\,?)+$/;
+
+    if(!validateReg(value, re)) {
+        return false;
+    }
+
+    return true;
+}
+
+function validateFiles(files) {
+    let inputFileNodes = document.querySelectorAll('input[type="file"]');
+    let result = true;
+    [].forEach.call(inputFileNodes, function (inputFileNode) {
+        let inputFileNodeName = inputFileNode.getAttribute('name');
+        if (typeof files[inputFileNodeName] === "undefined") {
+            console.log(files[inputFileNodeName]);
+            result = false;
+        }
+    });
+    return result;
+}
+
+function validateStep1(item) {
+    let fio_el = document.querySelectorAll('[name=fio]')[0];
+    let phone_el = document.querySelectorAll('[name=phone]')[0];
+    let email_el = document.querySelectorAll('[name=email]')[0];
+    let segment_el = document.querySelector('input[name="modal_form_radio"]:checked');
+    let agree_el = document.querySelectorAll('[name=agree]')[0];
+    let btn_next_el = document.getElementsByClassName("btn-next")[0];
+
+    let validFio = validateFio(fio_el);
+    let validPhone = validatePhone(phone_el);
+    let validEmail = validateEmail(email_el);
+    let validSegment = validateSegment(segment_el);
+    let validAgree = validateAgree(agree_el);
+
+    item.parentElement.className = item.parentElement.className.replace(/(^|\s)status-\S+/g, '');
+
+    if(validFio) {
+        fio_el.parentElement.classList.add('status-success');
+    }
+
+    if(validPhone) {
+        phone_el.parentElement.classList.add('status-success');
+    }
+
+    if(validEmail) {
+        email_el.parentElement.classList.add('status-success');
+    }
+
+    if(validFio && validPhone && validEmail && validSegment && validAgree) {
+        btn_next_el.classList.remove("disabled");
+    } else {
+        btn_next_el.classList.add("disabled");
+    }
+}
+
+function validateStep2(files) {
+    let inn_el = document.querySelectorAll('[name=inn]')[0];
+    let report_el = document.querySelectorAll('[name=report]')[0];
+    let btn_submit_el = document.getElementsByClassName("btn-submit")[0];
+
+    let validFiles = validateFiles(files);
+    let validInn = validateInn(inn_el);
+    let validReport = validateReport(report_el);
+
+    if(validInn && validReport && validFiles) {
+        btn_submit_el.classList.remove("disabled");
+    } else {
+        btn_submit_el.classList.add("disabled");
+    }
+}
+
+
+document.addEventListener("DOMContentLoaded", function(event) {
+    let step1_el = document.getElementsByClassName("step1")[0];
+    let inputNodes = step1_el.getElementsByClassName("modal_form_input");
+    let radioNodes = document.querySelectorAll('input[name="modal_form_radio"]');
+    let checkboxNode = document.querySelectorAll('input[name="agree"]')[0];
+
+    addListenerMulti(checkboxNode, 'change ', debouncer(function(e){
+        validateStep1(checkboxNode);
+    }));
+
+    [].forEach.call(radioNodes, function (item) {
+        addListenerMulti(item, 'change ', debouncer(function(e){
+            validateStep1(item);
+        }));
+    });
+
+    [].forEach.call(inputNodes, function (item) {
+        let input = item.querySelector('input');
+        addListenerMulti(input, 'change keyup paste', debouncer(function(e){
+            validateStep1(input);
+        }));
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function(event) {
+    var files = {};
+    let step2_el = document.getElementsByClassName("step2")[0];
+    let btnNodes = document.getElementsByClassName("btn-form");
+    let btnSubmit = document.getElementsByClassName("btn-submit")[0];
+    let inputNodes = step2_el.getElementsByClassName("input");
+
+    [].forEach.call(btnNodes, function (btnNode) {
+        let inputFileNode = btnNode.previousElementSibling;
+        let inputFileNodeName = inputFileNode.getAttribute('name');
+        addListenerMulti(btnNode, 'click', debouncer(function(e){
+            let btnNodePlaceholder = btnNode.getAttribute('data-placeholder');
+            if (typeof files[inputFileNodeName] !== "undefined") {
+                btnNode.classList.remove('file-active');
+                btnNode.innerHTML = btnNodePlaceholder;
+                delete files[inputFileNodeName];
+            }
+            inputFileNode.click();
+        }));
+        addListenerMulti(inputFileNode, 'change', debouncer(function(e){
+            let inputFileNodeName = e.target.getAttribute("name");
+            let file = e.target.files[0];
+
+            if(file) {
+                files[inputFileNodeName] = file;
+                btnNode.innerHTML = file.name; /*file.name file.size file.type*/
+                btnNode.classList.add('file-active');
+            }
+            validateStep2(files);
+        }));
+    });
+
+    [].forEach.call(inputNodes, function (inputNode) {
+        addListenerMulti(inputNode, 'change keyup paste', debouncer(function(e){
+            validateStep2(files);
+        }));
+    });
+
+    addListenerMulti(btnSubmit, 'click', debouncer(function(e){
+        e.preventDefault();
+        let formData = new FormData();
+        let request = new XMLHttpRequest();
+        let modal_2_el = document.getElementsByClassName("modal_form_step_2")[0];
+        let modal_3_el = document.getElementsByClassName("modal_form_step_3")[0];
+
+        formData.append("fio", $("input[name='fio']").val());
+        formData.append("phone", $("input[name='phone']").val());
+        formData.append("email", $("input[name='email']").val());
+        formData.append("segment", $("input[name='modal_form_radio']:checked").val());
+        formData.append("inn", $("input[name='inn']").val());
+        formData.append("report", $("input[name='report']").val());
+
+        Object.keys(files).forEach(function(key) {
+            console.log(files[key]);
+            formData.append("files[]", files[key]);
+            formData.append("filenames[]", key);
+        });
+
+        request.open('post', 'send.php');
+
+        request.upload.addEventListener('progress', function(e) {
+            var percent_complete = (e.loaded / e.total)*100;
+            console.log(percent_complete);
+        });
+
+        request.addEventListener('load', function(e) {
+            modal_2_el.style.display = 'none';
+            modal_3_el.style.display = 'block';
+            /*console.log(request.status);
+            console.log(request.response);*/
+        });
+
+        request.send(formData);
+    }));
+});
+
+
+
 $( document ).ready(function() {
-    var end = new Date('07/16/2020 23:32');
+    var end = new Date('07/20/2020 23:32');
 
     monthA = 'января,февраля,марта,апреля,мая,июня,июля,августа,сентября,октября,ноября,декабря'.split(',');
     document.getElementById('date').innerHTML = end.getDate() + ' ' + monthA[end.getMonth()];
@@ -31,8 +297,17 @@ $( document ).ready(function() {
         document.getElementById('countdown').innerHTML += ('0' + seconds).slice(-2);
     }
     timer = setInterval(showRemaining, 1000);
+
+
+
 });
+
 $(document).ready(function() {
+    var phoneMask = IMask(
+        document.getElementById('phone'), {
+            mask: '+{7}(000)000-00-00'
+        });
+
   $("a.scroll_to").click(function() {
     var elementClick = $(this).attr("href")
     var destination = $(elementClick).offset().top;

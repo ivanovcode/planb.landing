@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/flip-box.min.css">
     <link rel="stylesheet" href="css/jquery.bxslider.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/common.css">
     <title>RESTART 360 — Это мощная акселерационная программа для пересборки бизнеса.</title>
     <link rel="apple-touch-icon" sizes="76x76" href="favicon/apple-touch-icon.png">
@@ -704,15 +705,17 @@
   <div class="modal_form">
     <div class="modal_form_step_1 modal_form_step">
       <div class="modal_form_title">1 ЭТАП</div>
-      <div class="modal_form_input">
-        <input type="text" placeholder="ФИО">
-      </div>
-      <div class="modal_form_input">
-        <input type="text" placeholder="Телефон">
-      </div>
-      <div class="modal_form_input">
-        <input type="text" placeholder="E-mail">
-      </div>
+        <div class="step1">
+          <div class="modal_form_input input-wrapper">
+              <input type="text" minlength="10" maxlength="50" placeholder="ФИО" name="fio" autocomplete="off">
+          </div>
+          <div class="modal_form_input input-wrapper">
+            <input id="phone" type="text" minlength="11" maxlength="16" placeholder="Телефон" name="phone" autocomplete="off">
+          </div>
+          <div class="modal_form_input input-wrapper">
+            <input type="text"  minlength="8" maxlength="50" placeholder="E-mail" name="email" autocomplete="off">
+          </div>
+        </div>
       <div class="modal_form_radio">
         <div class="modal_form_radio_text">
           <b>Название</b> (Выбрать 1 из 7)
@@ -720,79 +723,127 @@
           <label>
             <span class="icon icon-1"></span>
             <span class="mfrt_t">ОБРАЗОВАНИЕ</span>
-            <input type="radio" name="modal_form_radio">
+            <input type="radio" name="modal_form_radio" value="Образование">
             <i></i>
           </label>
           <label>
             <span class="icon icon-2"></span>
             <span class="mfrt_t">RETAIL</span>
-            <input type="radio" name="modal_form_radio">
+            <input type="radio" name="modal_form_radio" value="Retail">
             <i></i>
           </label>
           <label>
             <span class="icon icon-3"></span>
             <span class="mfrt_t">КРАСОТА И МОДА</span>
-            <input type="radio" name="modal_form_radio">
+            <input type="radio" name="modal_form_radio" value="Красота и мода">
             <i></i>
           </label>
           <label>
             <span class="icon icon-4"></span>
             <span class="mfrt_t">УМНЫЙ ГОРОД</span>
-            <input type="radio" name="modal_form_radio">
+            <input type="radio" name="modal_form_radio" value="Умный город">
             <i></i>
           </label>
           <label>
             <span class="icon icon-5"></span>
             <span class="mfrt_t">ТУРИЗМ</span>
-            <input type="radio" name="modal_form_radio">
+            <input type="radio" name="modal_form_radio" value="Туризм">
             <i></i>
           </label>
           <label>
             <span class="icon icon-6"></span>
             <span class="mfrt_t">ЗДОРОВЬЕ</span>
-            <input type="radio" name="modal_form_radio">
+            <input type="radio" name="modal_form_radio" value="Здоровье">
             <i></i>
           </label>
           <label>
             <span class="icon icon-7"></span>
             <span class="mfrt_t">РАЗВЛЕЧЕНИЯ</span>
-            <input type="radio" name="modal_form_radio">
+            <input type="radio" name="modal_form_radio" value="Развлечения">
             <i></i>
           </label>
       </div>
       <div class="modal_form_checkbox">
         <label>
-          <input type="checkbox">
-          <span class="mfrt_t">Я принимаю условия соглашения по обработке данных</span>
+          <input type="checkbox" name="agree">
+            <span class="mfrt_t">Я принимаю все условия <a href="#">Политики конфиденциальности</a> и согласен на обработку персональных данных.</span>
         </label>
       </div>
       <div class="modal_form_btn">
-        <div class="modal_form_next modal_form_btn_a">ДАЛЕЕ</div>
+        <div class="modal_form_next modal_form_btn_a btn-next disabled">ДАЛЕЕ</div>
       </div>
     </div>
     <div class="modal_form_step_2 modal_form_step">
       <div class="modal_form_title">2 ЭТАП</div>
-      <div class="modal_form_input">
-        <input type="text" placeholder="Название компании">
+      <div class="rows step2">
+          <div class="row">
+              <div class="col-md-4">
+                  <div class="label-block">
+                      <b>Анкета</b>
+                  </div>
+              </div>
+              <div class="col-md-4">
+                <div class="button">Скачать шаблон</div>
+              </div>
+              <div class="col-md-4">
+                  <input type="file" name="form" style="display: none;" />
+                  <div class="button file btn-form" data-placeholder="Загрузить">Загрузить</div>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-md-12">
+                 <input type="number" class="input" placeholder="ИНН" name="inn" minlength="10" maxlength="12" autocomplete="off">
+              </div>
+          </div>
+          <div class="row">
+               <div class="col-md-12">
+                 <input type="text" class="input" placeholder="Оборот компании, выручки за 3 года (через запятую)" name="report" minlength="5" maxlength="50" autocomplete="off">
+               </div>
+          </div>
+          <div class="row">
+               <div class="col-md-4">
+                   <input type="file" name="report_2017" style="display: none;" />
+                   <div class="button file btn-form" data-placeholder="Загрузить 2017">Загрузить 2017</div>
+               </div>
+              <div class="col-md-4">
+                    <input type="file" name="report_2018" style="display: none;" />
+                    <div class="button file btn-form" data-placeholder="Загрузить 2018">Загрузить 2018</div>
+              </div>
+              <div class="col-md-4">
+                    <input type="file" name="report_2019" style="display: none;" />
+                    <div class="button file btn-form" data-placeholder="Загрузить 2019">Загрузить 2019</div>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-md-4">
+                  <div class="label-block">
+                      <b>Презентация проекта</b>
+                  </div>
+              </div>
+              <div class="col-md-4">
+                  <div class="button">Скачать шаблон</div>
+              </div>
+              <div class="col-md-4">
+                  <input type="file" name="presentation" style="display: none;" />
+                  <div class="button file btn-form" data-placeholder="Загрузить">Загрузить</div>
+              </div>
+          </div>
       </div>
-      <div class="modal_form_input">
-        <input type="text" placeholder="ИНН">
-      </div>
-      <div class="modal_form_input">
-        <input type="text" placeholder="Описание компании">
-      </div>
-      <div class="modal_form_input">
-        <input type="text" placeholder="Название строки">
-      </div>
-      <div class="modal_form_input">
-        <input type="text" placeholder="Название строки">
-      </div>
-      <div class="modal_form_btn">
-        <input type="submit" class="modal_form_send modal_form_btn_a" value="ОТПРАВИТЬ ЗАЯВКУ">
-      </div>
+     <div class="modal_form_btn">
+        <input type="submit" class="modal_form_send modal_form_btn_a btn-submit disabled" value="ОТПРАВИТЬ ЗАЯВКУ">
+     </div>
     </div>
+      <div class="modal_form_step_3 modal_form_step">
+          <div class="row">
+              <div class="col-md-8">
+                  Заявка отправлена - Спасибо!<br> С Вами свяжется наш менеджер для уточнения деталей.
+              </div>
+              <div class="col-md-4"></div>
+          </div>
+      </div>
   </div>
 </div>
+<script src="js/imask.min.js"></script>
 <script src="js/jquery.min.js"></script>
 <script src="js/popper.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
