@@ -1425,6 +1425,13 @@ footer .col-md-2 ul li {
     color: #ff001c;
 }
 
+.label-block.info {
+    padding: 10px;
+    height: auto;
+    text-align: center;
+    background: #e0e0e0;
+}
+
 .label-block {
     height: 50px;
     display: flex;
@@ -1452,7 +1459,7 @@ footer .col-md-2 ul li {
     line-height: 50px;
     padding: 0px 15px;
     text-align: center;
-    font-size: 18px;
+    font-size: 14px;
     font-weight: 300;
     cursor: pointer;
     -webkit-transition: all 0.5s ease;
@@ -1524,3 +1531,14 @@ footer .col-md-2 ul li {
  .rows .row {
      margin-top: 20px;
  }
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[name=inn] {
+    -moz-appearance: textfield;
+}

@@ -25,7 +25,7 @@ function validateFio(e) {
     let value = e.value.trim();
     let minlength = e.getAttribute("minlength");
 
-    let re = /^[А-ЯA-Z][а-яa-zА-ЯA-Z\-]{0,}\s[А-ЯA-Z][а-яa-zА-ЯA-Z\-]{1,}(\s[А-ЯA-Z][а-яa-zА-ЯA-Z\-]{1,})?$/;
+    let re = /^[а-яa-zА-ЯA-ZёЁ][а-яa-zА-ЯA-ZёЁ\-]{0,}\s[а-яa-zА-ЯA-ZёЁ][а-яa-zА-ЯA-ZёЁ\-]{1,}\s[а-яa-zА-ЯA-ZёЁ][а-яa-zА-ЯA-ZёЁ\-]{1,}?$/;
 
     if(value.length < minlength || !validateReg(value, re)) {
         return false;
@@ -34,7 +34,8 @@ function validateFio(e) {
 }
 
 function validatePhone(e) {
-    let value = e.value.replace(/[^+\d]/g, '');
+    let value = e.value.trim();
+    value = value.replace(/[^+\d]/g, '');
     let minlength = e.getAttribute("minlength");
 
     let re = /^((\+7|7|8)+([0-9]){10})$/;
@@ -47,7 +48,7 @@ function validatePhone(e) {
 }
 
 function validateEmail(e) {
-    let value = e.value;
+    let value = e.value.trim();
     let minlength = e.getAttribute("minlength");
 
     let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -76,8 +77,8 @@ function validateAgree(e) {
 }
 
 function validateInn(e) {
-    let value = e.value;
-    let re = /^\d{10}|\d{12}$/;
+    let value = e.value.trim();
+    let re = /^([0-9_-]){10,12}$/;
 
     if(!validateReg(value, re)) {
         return false;
@@ -87,8 +88,9 @@ function validateInn(e) {
 }
 
 function validateReport(e) {
-    let value = e.value;
-    let re = /^(?:\d\,?)+$/;
+    let value = e.value.trim();
+    value = value.replace(/\s/g, '');
+    let re = /^.\d{1,13},\d{1,13},\d{1,13}$/;
 
     if(!validateReg(value, re)) {
         return false;
@@ -189,7 +191,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 document.addEventListener("DOMContentLoaded", function(event) {
     var files = {};
     let step2_el = document.getElementsByClassName("step2")[0];
-    let btnNodes = document.getElementsByClassName("btn-form");
+    let btnNodes = document.getElementsByClassName("btn-upload");
     let btnSubmit = document.getElementsByClassName("btn-submit")[0];
     let inputNodes = step2_el.getElementsByClassName("input");
 
@@ -208,11 +210,29 @@ document.addEventListener("DOMContentLoaded", function(event) {
         addListenerMulti(inputFileNode, 'change', debouncer(function(e){
             let inputFileNodeName = e.target.getAttribute("name");
             let file = e.target.files[0];
+            let allowedExtensions;
 
             if(file) {
-                files[inputFileNodeName] = file;
-                btnNode.innerHTML = file.name; /*file.name file.size file.type*/
-                btnNode.classList.add('file-active');
+                switch (inputFileNodeName) {
+                    case 'form':
+                        allowedExtensions = /(\.doc|\.docx)$/i;
+                        break;
+                    case 'report_2017':
+                    case 'report_2018':
+                    case 'report_2019':
+                    case 'presentation':
+                        allowedExtensions = /(\.pdf)$/i;
+                        break;
+                    default:
+                        allowedExtensions = false
+                }
+
+                if (allowedExtensions !== false && allowedExtensions.exec(file.name)) {
+                    console.log('validate true');
+                    files[inputFileNodeName] = file;
+                    btnNode.innerHTML = file.name; /*file.name file.size file.type*/
+                    btnNode.classList.add('file-active');
+                }
             }
             validateStep2(files);
         }));
@@ -265,7 +285,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 
 $( document ).ready(function() {
-    var end = new Date('07/20/2020 23:32');
+    var end = new Date('07/21/2020 23:32');
 
     monthA = 'января,февраля,марта,апреля,мая,июня,июля,августа,сентября,октября,ноября,декабря'.split(',');
     document.getElementById('date').innerHTML = end.getDate() + ' ' + monthA[end.getMonth()];
