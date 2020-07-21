@@ -1542,3 +1542,31 @@ input::-webkit-inner-spin-button {
 input[name=inn] {
     -moz-appearance: textfield;
 }
+
+.error-container {
+    position:fixed;
+    top:0px;
+    height: 50px;
+    width:100%;
+    z-index:99999;
+    background: #ee0024;
+    color: #fff;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.3);
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s linear 0.33s, opacity 0.33s linear;
+}
+
+.error-container.active{
+    visibility: visible;
+    opacity: 1;
+    transition-delay: 0s;
+}
+
+.error-container .alert {
+    margin-bottom: 0px;
+}
+
+.error-container .close {
+    color: #fff;
+}

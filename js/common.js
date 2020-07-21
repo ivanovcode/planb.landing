@@ -211,6 +211,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
             let inputFileNodeName = e.target.getAttribute("name");
             let file = e.target.files[0];
             let allowedExtensions;
+            let error_el = document.getElementsByClassName("error-container")[0];
+            let alert_el = document.getElementsByClassName("alert")[0];
+
 
             if(file) {
                 switch (inputFileNodeName) {
@@ -227,12 +230,25 @@ document.addEventListener("DOMContentLoaded", function(event) {
                         allowedExtensions = false
                 }
 
-                if (allowedExtensions !== false && allowedExtensions.exec(file.name)) {
-                    console.log('validate true');
+                if (allowedExtensions !== false && allowedExtensions.exec(file.name) && file.size <= 50*1024*1024) {
                     files[inputFileNodeName] = file;
                     btnNode.innerHTML = file.name; /*file.name file.size file.type*/
                     btnNode.classList.add('file-active');
                 }
+
+                if (allowedExtensions === false || !allowedExtensions.exec(file.name)) {
+                    alert_el.innerHTML = "Выбран не верный тип файла, попробуйте снова."
+                    error_el.classList.add('active');
+                }
+
+                if(file.size > 50*1024*1024) {
+                    alert_el.innerHTML = "Превышен допустимый лимит файла 50 МБ, попробуйте снова. "
+                    error_el.classList.add('active');
+                }
+
+                setTimeout(function tick() {
+                    error_el.classList.remove('active');
+                }, 2000);
             }
             validateStep2(files);
         }));
