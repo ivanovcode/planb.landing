@@ -724,7 +724,7 @@
         </div>
       <div class="modal_form_radio">
         <div class="modal_form_radio_text">
-          <b>Название</b> (Выбрать 1 из 7)
+          <b>Направление</b> (Выбрать 1 из 7)
         </div>
           <label>
             <span class="icon icon-1"></span>
@@ -798,12 +798,16 @@
           </div>
           <div class="row">
               <div class="col-md-12">
-                 <input type="number" class="input" placeholder="ИНН" name="inn" minlength="10" maxlength="12" autocomplete="off">
+                  <div class="modal_form_input input-wrapper">
+                        <input type="number" class="input" placeholder="ИНН" name="inn" minlength="10" maxlength="12" autocomplete="off">
+                  </div>
               </div>
           </div>
           <div class="row">
                <div class="col-md-12">
-                 <input type="text" class="input" placeholder="Оборот компании, выручки за 3 года (укажите три суммы через запятую)" name="report" minlength="5" maxlength="50" autocomplete="off">
+                   <div class="modal_form_input input-wrapper">
+                        <input type="text" class="input" placeholder="Оборот компании, выручка за 3 года (укажите три суммы через запятую, в руб.)" name="report" minlength="5" maxlength="50" autocomplete="off">
+                   </div>
                </div>
           </div>
           <div class="row">
@@ -849,7 +853,9 @@
       <div class="modal_form_step_3 modal_form_step">
           <div class="row">
               <div class="col-md-8">
-                  Заявка отправлена - Спасибо!<br> С Вами свяжется наш менеджер для уточнения деталей.
+                 <div class="modal_content">
+                    Заявка отправлена - Спасибо!<br> С Вами свяжется наш менеджер для уточнения деталей.
+                 </div>
               </div>
               <div class="col-md-4"></div>
           </div>

@@ -13,6 +13,15 @@ function debouncer(fn, timeout) {
     }
 }
 
+function IsJsonString(str) {
+    try {
+        JSON.parse(str);
+    } catch (e) {
+        return false;
+    }
+    return true;
+}
+
 function myObjDown(event) {
     if (el !== event.target) return;
 }
@@ -147,7 +156,7 @@ function validateStep1(item) {
     }
 }
 
-function validateStep2(files) {
+function validateStep2(item, files) {
     let inn_el = document.querySelectorAll('[name=inn]')[0];
     let report_el = document.querySelectorAll('[name=report]')[0];
     let btn_submit_el = document.getElementsByClassName("btn-submit")[0];
@@ -155,6 +164,16 @@ function validateStep2(files) {
     let validFiles = validateFiles(files);
     let validInn = validateInn(inn_el);
     let validReport = validateReport(report_el);
+
+    item.parentElement.className = item.parentElement.className.replace(/(^|\s)status-\S+/g, '');
+
+    if(validInn) {
+        inn_el.parentElement.classList.add('status-success');
+    }
+
+    if(validReport) {
+        report_el.parentElement.classList.add('status-success');
+    }
 
     if(validInn && validReport && validFiles) {
         btn_submit_el.classList.remove("disabled");
@@ -250,13 +269,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
                     error_el.classList.remove('active');
                 }, 2000);
             }
-            validateStep2(files);
+            validateStep2(inputFileNode, files);
         }));
     });
 
     [].forEach.call(inputNodes, function (inputNode) {
         addListenerMulti(inputNode, 'change keyup paste', debouncer(function(e){
-            validateStep2(files);
+            validateStep2(inputNode, files);
         }));
     });
 
@@ -266,6 +285,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         let request = new XMLHttpRequest();
         let modal_2_el = document.getElementsByClassName("modal_form_step_2")[0];
         let modal_3_el = document.getElementsByClassName("modal_form_step_3")[0];
+        let modal_3_content = modal_3_el.getElementsByClassName("modal_content")[0];
 
         formData.append("fio", $("input[name='fio']").val());
         formData.append("phone", $("input[name='phone']").val());
@@ -275,7 +295,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
         formData.append("report", $("input[name='report']").val());
 
         Object.keys(files).forEach(function(key) {
-            console.log(files[key]);
             formData.append("files[]", files[key]);
             formData.append("filenames[]", key);
         });
@@ -284,14 +303,31 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
         request.upload.addEventListener('progress', function(e) {
             var percent_complete = (e.loaded / e.total)*100;
-            console.log(percent_complete);
         });
 
         request.addEventListener('load', function(e) {
+            let success = true;
+            let response;
+
+
+
+            if(request.status !== 200 || !IsJsonString(request.responseText)) {
+                success = false;
+            } else {
+                response = JSON.parse(request.responseText);
+                if(!response.success){
+                    success = false;
+                }
+            }
+
+            if(success) {
+                modal_3_content.innerHTML = 'Заявка отправлена - Спасибо!<br> С Вами свяжется наш менеджер для уточнения деталей.';
+            } else {
+                modal_3_content.innerHTML = 'Ошибка!<br> Попробуйте еще раз, если ошибка повторится обратитесь на email: <a href="mailto:ask@business.technograd.moscow">ask.business@technograd.moscow</a>';
+            }
+
             modal_2_el.style.display = 'none';
             modal_3_el.style.display = 'block';
-            /*console.log(request.status);
-            console.log(request.response);*/
         });
 
         request.send(formData);
@@ -301,7 +337,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 
 $( document ).ready(function() {
-    var end = new Date('07/21/2020 23:32');
+    var end = new Date('07/22/2020 23:32');
 
     monthA = 'января,февраля,марта,апреля,мая,июня,июля,августа,сентября,октября,ноября,декабря'.split(',');
     document.getElementById('date').innerHTML = end.getDate() + ' ' + monthA[end.getMonth()];

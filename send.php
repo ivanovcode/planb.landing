@@ -1,15 +1,46 @@
 <?php
-/*ini_set('error_reporting', E_ALL);
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);*/
-
 error_reporting(-1);
 ini_set('display_errors', 'On');
 set_error_handler("var_dump");
 
+header('Content-type:application/json;charset=utf-8');
+
+define('DIR', __DIR__);
+
+define('IS_AJAX', isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest');
+define('IS_HOST', (isset($_SERVER['HTTP_REFERER']) && strpos($_SERVER['HTTP_REFERER'], getenv('HTTP_HOST'))));
+
+$requires = array(
+    DIR.'/vendor/phpmailer/phpmailer/src/Exception.php',
+    DIR.'/vendor/phpmailer/phpmailer/src/PHPMailer.php',
+    DIR.'/vendor/phpmailer/phpmailer/src/SMTP.php',
+    DIR.'/vendor/phpoffice/phpexcel/Classes/PHPExcel.php',
+    DIR.'/vendor/phpoffice/phpexcel/Classes/PHPExcel/IOFactory.php'
+);
+
+foreach ($requires as $require) {
+    if (!file_exists($require)) {
+        die('Не установлены необходимые зависимости. Запустите composer install');
+    } else {
+        require_once($require);
+    }
+}
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
+
+if(!IS_AJAX && !IS_HOST) {
+    die('Restricted access');
+}
+
+foreach ($_POST as $key => $value) {
+    if(is_scalar($_POST[$key])) {
+        $_POST[$key] = strip_tags($_POST[$key]);
+        $_POST[$key] = htmlentities($_POST[$key], ENT_QUOTES, "UTF-8");
+        $_POST[$key] = htmlspecialchars($_POST[$key], ENT_QUOTES);
+    }
+}
 
 function deleteDirectory($dir) {
     if (!file_exists($dir)) {
@@ -32,13 +63,6 @@ function deleteDirectory($dir) {
 }
 
 try {
-    require_once __DIR__ . '/vendor/phpmailer/phpmailer/src/Exception.php';
-    require_once __DIR__ . '/vendor/phpmailer/phpmailer/src/PHPMailer.php';
-    require_once __DIR__ . '/vendor/phpmailer/phpmailer/src/SMTP.php';
-
-    require_once __DIR__ . '/vendor/phpoffice/phpexcel/Classes/PHPExcel.php';
-    require_once __DIR__ . '/vendor/phpoffice/phpexcel/Classes/PHPExcel/IOFactory.php';
-
     $fileBase = __DIR__ . '/uploads/' . date("m.d.y") . '.xlsx';
     $uuid = md5(uniqid(rand(),1));
 
@@ -72,6 +96,16 @@ try {
     }
 
     $objPHPExcel->setActiveSheetIndex(0);
+
+    $objPHPExcel->getActiveSheet()->setCellValueExplicit('A1', 'Дата создания заявки',PHPExcel_Cell_DataType::TYPE_STRING);
+    $objPHPExcel->getActiveSheet()->setCellValueExplicit('B1', 'ФИО',PHPExcel_Cell_DataType::TYPE_STRING);
+    $objPHPExcel->getActiveSheet()->setCellValueExplicit('C1', 'Телефон',PHPExcel_Cell_DataType::TYPE_STRING);
+    $objPHPExcel->getActiveSheet()->setCellValueExplicit('D1', 'Email',PHPExcel_Cell_DataType::TYPE_STRING);
+    $objPHPExcel->getActiveSheet()->setCellValueExplicit('E1', 'Сегмент',PHPExcel_Cell_DataType::TYPE_STRING);
+    $objPHPExcel->getActiveSheet()->setCellValueExplicit('F1', 'ИНН',PHPExcel_Cell_DataType::TYPE_STRING);
+    $objPHPExcel->getActiveSheet()->setCellValueExplicit('G1', 'Отчеты о доходах',PHPExcel_Cell_DataType::TYPE_STRING);
+    $objPHPExcel->getActiveSheet()->setCellValueExplicit('H1', 'Название папки с файлами',PHPExcel_Cell_DataType::TYPE_STRING);
+
     $row = $objPHPExcel->getActiveSheet()->getHighestRow()+1;
 
     $objPHPExcel->getActiveSheet()->setCellValueExplicit('A'.$row, date("Y-m-d H:i:s"),PHPExcel_Cell_DataType::TYPE_STRING);
@@ -86,15 +120,19 @@ try {
     $objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);
     $objWriter->save($fileBase);
 
-    print_r(array('success' => true), true);
+    echo json_encode(array(
+        "success" =>true
+    ));
 } catch (Exception $e) {
-    print_r(array('success' => false), true);
+    echo json_encode(array(
+        "success" =>false
+    ));
 }
 
 try {
     $mail = new PHPMailer(true);
 
-    $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+    //$mail->SMTPDebug = SMTP::DEBUG_SERVER;
     $mail->isSMTP();
     $mail->Host       = 'ssl://smtp.yandex.ru';
     $mail->SMTPAuth   = true;
@@ -142,6 +180,8 @@ try {
     $mail->Body  =  $htmlContent;
     $mail->send();
 
-} catch (Exception $e) { }
+} catch (Exception $e) {
+
+}
 
 ?>
